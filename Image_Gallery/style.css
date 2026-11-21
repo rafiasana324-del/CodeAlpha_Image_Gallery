@@ -1,0 +1,222 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* --- Background with Dark Theme --- */
+body {
+    /* Yahan aapki background pic ka path hai */
+    background-image: url('images/bg-pic.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    /* Agar pic load na ho toh background black rahega */
+    background-color: #000; 
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Background ko dark/black karne ke liye overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.75); /* Black overlay 75% */
+    z-index: -1;
+}
+
+/* --- Heading (Black & White 3D Border) --- */
+h1 {
+    display: inline-block;
+    margin-bottom: 30px;
+    color: #000; /* Black Text */
+    background-color: #fff; /* White Background */
+    padding: 12px 35px;
+    border: 3px solid #000; /* Black Border */
+    border-radius: 12px; /* Round edges */
+    box-shadow: 6px 6px 0px #000; /* 3D Shadow effect */
+    text-transform: uppercase; /* Capital letters */
+    letter-spacing: 2px;
+    font-size: 28px;
+}
+
+/* --- Filter Buttons (3D & Hover) --- */
+.filters {
+    margin-bottom: 30px;
+}
+
+.filters button {
+    padding: 10px 22px;
+    margin: 8px;
+    border: 2px solid #000; /* Border */
+    background-color: white;
+    color: #000;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    /* 3D Effect */
+    box-shadow: 0 5px 0 #000; 
+    transition: all 0.2s ease;
+}
+
+/* Hover aur Active state (Button dabne ka effect) */
+.filters button:hover, .filters button.active {
+    background-color: #000;
+    color: white;
+    transform: translateY(3px); /* Neeche jayega */
+    box-shadow: 0 2px 0 #000; /* Shadow kam ho jayegi */
+}
+
+/* --- Gallery Grid (No White Borders on Pics) --- */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5); /* Dark Shadow */
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    background-color: #ddd;
+    /* Koi white border nahi lagaya yahan */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+/* Hover Effect Enhance */
+.gallery-item:hover {
+    transform: translateY(-8px); 
+    box-shadow: 0 15px 25px rgba(0,0,0,0.9); /* Shadow aur gehri hogi */
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1); 
+}
+
+.gallery-item.hide {
+    display: none;
+}
+
+/* --- Category Nav Buttons (Bottom) --- */
+.category-nav {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.category-nav button {
+    padding: 12px 25px;
+    margin: 0 10px;
+    font-size: 16px;
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 5px 0 #000; /* 3D */
+    transition: all 0.2s ease;
+}
+
+.category-nav button:hover {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 #000;
+    background-color: #007bff; /* Hover par blue */
+    color: white;
+}
+
+/* Lightbox Styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 80%;
+    max-height: 80vh;
+    border-radius: 5px;
+    box-shadow: 0 0 25px rgba(255,255,255,0.3);
+    transition: 0.3s;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #ff4d4d;
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.nav-btn:hover {
+    background: rgba(255,255,255,0.6);
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+@media (max-width: 600px) {
+    .gallery-container {
+        grid-template-columns: 1fr;
+    }
+    .lightbox img {
+        max-width: 95%;
+    }
+    .nav-btn {
+        padding: 10px;
+        font-size: 18px;
+    }
+    .category-nav button {
+        padding: 10px 15px;
+        font-size: 14px;
+        margin: 5px;
+    }
+    h1 {
+        font-size: 20px;
+        padding: 10px 20px;
+    }
+}

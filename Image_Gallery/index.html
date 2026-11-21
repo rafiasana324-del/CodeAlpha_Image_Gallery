@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Image Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>My Beautiful Image Gallery</h1>
+
+    <!-- Filter Buttons -->
+    <div class="filters">
+        <button onclick="filterSelection('all', this)" class="active">All</button>
+        <button onclick="filterSelection('CsMaster', this)">CsMaster</button>
+        <button onclick="filterSelection('Study', this)">Study</button>
+        <button onclick="filterSelection('Gameslover', this)">Gameslover</button>
+    </div>
+
+    <!-- Image Grid -->
+    <div class="gallery-container">
+        <!-- CsMaster (3 Pics) -->
+        <div class="gallery-item CsMaster">
+            <img src="images/img1.jpg" alt="CsMaster 1" onclick="openLightbox(0)">
+        </div>
+        <div class="gallery-item CsMaster">
+            <img src="images/img2.jpg" alt="CsMaster 2" onclick="openLightbox(1)">
+        </div>
+        <div class="gallery-item CsMaster">
+            <img src="images/img3.jpg" alt="CsMaster 3" onclick="openLightbox(2)">
+        </div>
+
+        <!-- Study (3 Pics) -->
+        <div class="gallery-item Study">
+            <img src="images/img4.jpg" alt="Study 1" onclick="openLightbox(3)">
+        </div>
+        <div class="gallery-item Study">
+            <img src="images/img5.jpg" alt="Study 2" onclick="openLightbox(4)">
+        </div>
+        <div class="gallery-item Study">
+            <img src="images/img6.jpg" alt="Study 3" onclick="openLightbox(5)">
+        </div>
+
+        <!-- Gameslover (3 Pics) -->
+        <div class="gallery-item Gameslover">
+            <img src="images/img7.jpg" alt="Gameslover 1" onclick="openLightbox(6)">
+        </div>
+        <div class="gallery-item Gameslover">
+            <img src="images/img8.jpg" alt="Gameslover 2" onclick="openLightbox(7)">
+        </div>
+        <div class="gallery-item Gameslover">
+            <img src="images/img9.jpg" alt="Gameslover 3" onclick="openLightbox(8)">
+        </div>
+    </div>
+
+    <!-- Naye Previous / Next Category Buttons (Bottom) -->
+    <div class="category-nav">
+        <button id="prevCategoryBtn" onclick="changeCategory(-1)">⏮ Previous Category</button>
+        <button id="nextCategoryBtn" onclick="changeCategory(1)">Next Category ⏭</button>
+    </div>
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <button class="nav-btn prev" onclick="changeImage(-1)">&#10094;</button>
+        <img id="lightbox-img" src="" alt="Lightbox Image">
+        <button class="nav-btn next" onclick="changeImage(1)">&#10095;</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
